@@ -3,11 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://dirn7yynv64c4" path="res://icon.svg" id="1_qtxo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(129, 123)
+size = Vector2(320, 81)
 
 [node name="SpecialBlock" type="RigidBody2D"]
+freeze = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_qtxo2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

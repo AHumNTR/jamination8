@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://7intygnq0ejx"]
+[gd_scene load_steps=2 format=3 uid="uid://7intygnq0ejx"]
+
+[ext_resource type="Script" uid="uid://bj6b2f377v4w6" path="res://MainMenuButton.cs" id="1_uubjt"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,3 +32,4 @@ offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
+script = ExtResource("1_uubjt")
