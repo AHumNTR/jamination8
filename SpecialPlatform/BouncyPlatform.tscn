@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bow42gqo06f30"]
+
+[ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_2jxpd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ubxb3"]
+bounce = 1.0
+
+[node name="BouncyPlatform" instance=ExtResource("1_2jxpd")]
+physics_material_override = SubResource("PhysicsMaterial_ubxb3")
+freeze = true
