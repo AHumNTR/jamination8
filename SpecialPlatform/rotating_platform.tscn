@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://csoxj2pnhncm6"]
+
+[ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_vac4g"]
+[ext_resource type="Texture2D" uid="uid://7addu74le21x" path="res://rotatewoodplank.png" id="2_yehyd"]
+[ext_resource type="Script" uid="uid://dk722rxvt3yfj" path="res://SpecialPlatform/RotatingPlatform.cs" id="3_yehyd"]
+
+[node name="RotatingPlatform" instance=ExtResource("1_vac4g")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_yehyd")
+script = ExtResource("3_yehyd")

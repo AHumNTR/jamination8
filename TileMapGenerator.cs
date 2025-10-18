@@ -7,7 +7,7 @@ public partial class TileMapGenerator : TileMapLayer
     public PackedScene[] items;
 
     public override void _Ready()
-    {
+	{
         foreach (Vector2I cell in GetUsedCells())
         {
             if (GetCellSourceId(cell) != 0)
