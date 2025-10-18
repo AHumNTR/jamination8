@@ -5,15 +5,14 @@ public partial class Player : RigidBody2D
 {
 	[Export]
 	public float jumpForce;
-
+	Area2D area2D;
 	int swingDirection = 1;
     public override void _Ready()
     {
         base._Ready();
-		playerRaycast = GetNode<RayCast2D>("RayCast2D");
+		area2D=GetNode<Area2D>("Area2D");
     }
 
-	[Export] private RayCast2D playerRaycast;
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
@@ -22,7 +21,7 @@ public partial class Player : RigidBody2D
 		{
 			swingDirection = swingDirection * -1;
 		}
-		if (Input.IsActionJustPressed("Jump") && isOnFloor)
+		if (Input.IsActionJustPressed("Jump") && area2D.GetOverlappingBodies().Count > 1)
 		{
 			GD.Print("jumping");
 			ApplyForce(-Transform.Y * jumpForce);
