@@ -19,6 +19,10 @@ public partial class MovingPlatform : RigidBody2D
 	public override void _Process(double delta)
     {
 		Position += new Vector2((float)delta * direction * speed,0);
-		if (Math.Abs(Position.X - startingX) > range) direction = -direction;
+		if (Math.Abs(Position.X - startingX) > range)
+		{
+			Position=new Vector2(startingX+direction*range,Position.Y);
+			direction = -direction;
+		}
     }
 }
