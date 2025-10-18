@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5s2vdb3ve7x0"]
+
+[ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_5y8ol"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_riipj"]
+friction = 0.0
+rough = true
+
+[node name="SlidingBlock" instance=ExtResource("1_5y8ol")]
+physics_material_override = SubResource("PhysicsMaterial_riipj")
