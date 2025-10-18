@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dui62uvt4gg2s"]
+
+[ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_64slw"]
+[ext_resource type="Texture2D" uid="uid://cuo5srjkx7yqy" path="res://woodplank.png" id="2_64slw"]
+[ext_resource type="Script" uid="uid://c7p06h5ra6jow" path="res://MovingPlatform.cs" id="3_brmro"]
+
+[node name="SpecialBlock" instance=ExtResource("1_64slw")]
+can_sleep = false
+freeze_mode = 1
+script = ExtResource("3_brmro")
+range = 3000
+speed = 500.0
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.25, 0.25182107)
+texture = ExtResource("2_64slw")

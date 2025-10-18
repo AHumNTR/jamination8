@@ -19,17 +19,32 @@ size_flags_vertical = 0
 text = " JAMINATION8 game"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer"]
+[node name="Start" type="Button" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -176.0
-offset_top = -123.0
+offset_top = -51.5
 offset_right = 176.0
-offset_bottom = 123.0
+offset_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Start"
+script = ExtResource("1_uubjt")
+
+[node name="ExitGame" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = 76.0
+offset_right = 176.0
+offset_bottom = 183.99939
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
 script = ExtResource("1_uubjt")
