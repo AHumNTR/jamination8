@@ -24,6 +24,7 @@ public partial class Player : RigidBody2D
 		}
 		if (Input.IsActionJustPressed("Jump") && isOnFloor)
 		{
+			GD.Print("jumping");
 			ApplyForce(-Transform.Y * jumpForce);
 		}
 		if (Math.Abs(RotationDegrees % 360) > 60)

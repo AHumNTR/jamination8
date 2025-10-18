@@ -8,8 +8,8 @@
 can_sleep = false
 freeze_mode = 1
 script = ExtResource("3_brmro")
-range = 3000
-speed = 500.0
+range = 800
+speed = 300.0
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.25, 0.25182107)

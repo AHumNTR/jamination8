@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fymvk730kk6w" path="res://icyplatform.png" id="2_ugpvy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_riipj"]
-friction = 0.0
+friction = 0.17
 rough = true
 
 [node name="SlidingBlock" instance=ExtResource("1_5y8ol")]
