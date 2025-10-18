@@ -13,8 +13,10 @@ public partial class TileMapGenerator : TileMapLayer
             if (GetCellSourceId(cell) != 0)
             {
                 Vector2I atlasCord = GetCellAtlasCoords(cell);
-                Node node = items[GetCellSourceId(cell) - 1].Instantiate<Node>();
+				GD.Print(atlasCord.Y);
+                Node2D node = items[atlasCord.Y].Instantiate<Node2D>();
                 AddChild(node);
+                node.Position = MapToLocal(cell);
                 EraseCell(cell);
             }
         }

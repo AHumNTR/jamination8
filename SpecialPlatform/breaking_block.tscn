@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_5jelt"]
 [ext_resource type="Script" uid="uid://doih8q2bbpx4g" path="res://BreakingBlock.cs" id="2_jgh2o"]
-[ext_resource type="Texture2D" uid="uid://cj5fijikanjp7" path="res://nograssplatform.png" id="3_5lu1h"]
+[ext_resource type="Texture2D" uid="uid://bnqmw1xr8etc2" path="res://crack3.png" id="3_5jelt"]
 [ext_resource type="Texture2D" uid="uid://bbtgbag2s1nv2" path="res://withgrassplatform.png" id="4_m0w7x"]
 [ext_resource type="Texture2D" uid="uid://dirn7yynv64c4" path="res://icon.svg" id="5_a7xrs"]
 
@@ -11,6 +11,13 @@ freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 3
 script = ExtResource("2_jgh2o")
-textures = Array[Texture2D]([ExtResource("3_5lu1h"), ExtResource("4_m0w7x"), ExtResource("5_a7xrs")])
+textures = Array[Texture2D]([ExtResource("3_5jelt"), ExtResource("4_m0w7x"), ExtResource("5_a7xrs")])
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_5jelt")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, -0.5)
 
 [node name="Timer" type="Timer" parent="." index="2"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5s2vdb3ve7x0"]
+[gd_scene load_steps=4 format=3 uid="uid://b5s2vdb3ve7x0"]
 
 [ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_5y8ol"]
+[ext_resource type="Texture2D" uid="uid://fymvk730kk6w" path="res://icyplatform.png" id="2_ugpvy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_riipj"]
 friction = 0.0
@@ -8,3 +9,6 @@ rough = true
 
 [node name="SlidingBlock" instance=ExtResource("1_5y8ol")]
 physics_material_override = SubResource("PhysicsMaterial_riipj")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ugpvy")
