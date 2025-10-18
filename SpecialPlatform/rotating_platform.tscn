@@ -11,8 +11,10 @@ freeze = false
 freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 3
+linear_damp_mode = 1
 linear_damp = 100.0
 script = ExtResource("3_yehyd")
+rotateBackSpeed = 10.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_yehyd")

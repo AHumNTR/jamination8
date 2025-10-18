@@ -7,13 +7,9 @@ public partial class MovingPlatform : RigidBody2D
 	public int range;
 	[Export]
 	public float speed;
-	float startingX;
+	public float startingX;
 	int direction=1;
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-    {
-		startingX = Position.X;
-    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

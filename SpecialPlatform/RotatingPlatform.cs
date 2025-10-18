@@ -23,8 +23,8 @@ public partial class RotatingPlatform : RigidBody2D
     }
     public override void _PhysicsProcess(double delta)
     {
-		if(rotateBack)Rotate(-Rotation*(float)delta*rotateBackSpeed);
-        base._PhysicsProcess(delta);
+			if(rotateBack)AngularVelocity= -Rotation*(float)delta*rotateBackSpeed;
+  //      base._PhysicsProcess(delta);
     }
 
 

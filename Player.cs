@@ -22,7 +22,7 @@ public partial class Player : RigidBody2D
 		{
 			swingDirection = swingDirection * -1;
 		}
-		if (Input.IsActionJustPressed("Jump") && playerRaycast.IsColliding())
+		if (Input.IsActionJustPressed("Jump") && isOnFloor)
 		{
 			ApplyForce(-Transform.Y * jumpForce);
 		}
@@ -30,7 +30,22 @@ public partial class Player : RigidBody2D
 		{
 			GD.Print("ov");
 			swingDirection=swingDirection * -1;//should kill you instead
+
 		}
 	}
+	bool isOnFloor;
+    public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+    {
+        base._IntegrateForces(state);
+		int i = 0;
+		isOnFloor = false;
+		while (i < state.GetContactCount())
+        {
+			Vector2 normal=state.GetContactLocalNormal(i);
+			if (normal.Dot(Vector2.Up) > 0.8) isOnFloor = true;
+			i++;
+        }
+    }
+
 
 }
