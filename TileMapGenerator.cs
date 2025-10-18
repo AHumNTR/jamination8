@@ -17,6 +17,7 @@ public partial class TileMapGenerator : TileMapLayer
                 Node2D node = items[atlasCord.Y].Instantiate<Node2D>();
                 AddChild(node);
                 node.Position = MapToLocal(cell);
+				if (atlasCord.Y == 3) ((MovingPlatform)node).startingX = node.Position.X;
                 EraseCell(cell);
             }
         }
