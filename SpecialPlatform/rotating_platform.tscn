@@ -5,7 +5,14 @@
 [ext_resource type="Script" uid="uid://dk722rxvt3yfj" path="res://SpecialPlatform/RotatingPlatform.cs" id="3_yehyd"]
 
 [node name="RotatingPlatform" instance=ExtResource("1_vac4g")]
+mass = 10.0
+gravity_scale = 0.0
+freeze = false
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 3
+linear_damp = 100.0
+script = ExtResource("3_yehyd")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_yehyd")
-script = ExtResource("3_yehyd")

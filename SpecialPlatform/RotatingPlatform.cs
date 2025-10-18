@@ -1,18 +1,33 @@
 using Godot;
 using System;
 
-public partial class RotatingPlatform : Sprite2D
+public partial class RotatingPlatform : RigidBody2D
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export]
-	public float range;
-	[Export]
-	public float speed;
+	public float rotateBackSpeed = 1f;
+	public bool rotateBack;
+    public override void _Ready()
+    {
+        base._Ready();
+		BodyExited += bodyExit;
+		BodyEntered += bodyEnter;
+    }
+	public void bodyEnter(Node body)
+	{
+		if (GetCollidingBodies().Count == 1) rotateBack = false;
+    }
+	public void bodyExit(Node body)
+	{
+		if (GetCollidingBodies().Count == 1) rotateBack = true;
+    }
+    public override void _PhysicsProcess(double delta)
+    {
+		if(rotateBack)Rotate(-Rotation*(float)delta*rotateBackSpeed);
+        base._PhysicsProcess(delta);
+    }
+
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-    {
-		Rotate(speed);
-		if (Math.Abs(RotationDegrees) > range) speed = -speed;
-    }
+    
 }
