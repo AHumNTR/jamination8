@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk12f7kphhlp2"]
+
+[ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_5jelt"]
+[ext_resource type="Script" uid="uid://doih8q2bbpx4g" path="res://BreakingBlock.cs" id="2_jgh2o"]
+[ext_resource type="Texture2D" uid="uid://cj5fijikanjp7" path="res://nograssplatform.png" id="3_5lu1h"]
+[ext_resource type="Texture2D" uid="uid://bbtgbag2s1nv2" path="res://withgrassplatform.png" id="4_m0w7x"]
+[ext_resource type="Texture2D" uid="uid://dirn7yynv64c4" path="res://icon.svg" id="5_a7xrs"]
+
+[node name="BreakingBlock" instance=ExtResource("1_5jelt")]
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("2_jgh2o")
+textures = Array[Texture2D]([ExtResource("3_5lu1h"), ExtResource("4_m0w7x"), ExtResource("5_a7xrs")])
+
+[node name="Timer" type="Timer" parent="." index="2"]
