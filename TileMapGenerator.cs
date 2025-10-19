@@ -10,7 +10,7 @@ public partial class TileMapGenerator : TileMapLayer
 	{
         foreach (Vector2I cell in GetUsedCells())
         {
-            if (GetCellSourceId(cell) != 0)
+            if (GetCellSourceId(cell) == 1)
             {
                 Vector2I atlasCord = GetCellAtlasCoords(cell);
 				GD.Print(atlasCord.Y);
