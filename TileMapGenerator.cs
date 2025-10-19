@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Numerics;
 
 public partial class TileMapGenerator : TileMapLayer
 {
@@ -16,7 +17,7 @@ public partial class TileMapGenerator : TileMapLayer
 				GD.Print(atlasCord.Y);
                 Node2D node = items[atlasCord.Y].Instantiate<Node2D>();
                 AddChild(node);
-                node.Position = MapToLocal(cell);
+                node.Position = MapToLocal(cell) - new  Vector2I(140,20);
 				if (atlasCord.Y == 3) ((MovingPlatform)node).startingX = node.Position.X;
                 EraseCell(cell);
             }
