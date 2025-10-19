@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_vac4g"]
 [ext_resource type="Texture2D" uid="uid://7addu74le21x" path="res://rotatewoodplank.png" id="2_yehyd"]
-[ext_resource type="Script" uid="uid://dk722rxvt3yfj" path="res://SpecialPlatform/RotatingPlatform.cs" id="3_yehyd"]
+[ext_resource type="Script" uid="uid://dk722rxvt3yfj" path="res://RotatingPlatform.cs" id="3_yehyd"]
 
 [node name="RotatingPlatform" instance=ExtResource("1_vac4g")]
 mass = 10.0

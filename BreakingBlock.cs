@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class BreakingBlock : RigidBody2D
+public partial class BreakingBlock : PlatformBase
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export]

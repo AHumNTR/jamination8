@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class MovingPlatform : RigidBody2D
+public partial class MovingPlatform : PlatformBase
 {
 	[Export]
 	public int range;
