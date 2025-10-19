@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://c20p8a6l8dad2"]
+
+[ext_resource type="Texture2D" uid="uid://dy74fh1v170wi" path="res://circle.png" id="1_5702d"]
+[ext_resource type="Script" uid="uid://bdt7r0qfu70ih" path="res://KillParticle.cs" id="2_q8wtj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0yesn"]
+
+[sub_resource type="Gradient" id="Gradient_5702d"]
+colors = PackedColorArray(0.29411766, 0.47058824, 0.105882354, 1, 0.3764706, 0.5529412, 0.18039216, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q8wtj"]
+gradient = SubResource("Gradient_5702d")
+
+[sub_resource type="Curve" id="Curve_davb0"]
+_data = [Vector2(0.015151501, 0.49438208), 0.0, -0.06591758, 0, 0, Vector2(1, 0.078651786), 0.07062636, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ooc8r"]
+curve = SubResource("Curve_davb0")
+
+[sub_resource type="Curve" id="Curve_2d52u"]
+_data = [Vector2(0, 0.68539333), 0.0, 0.0, 0, 0, Vector2(1, 0.17977536), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5jc4t"]
+curve = SubResource("Curve_2d52u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x8cjx"]
+lifetime_randomness = 0.15
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 120.0
+initial_velocity_min = 10.0
+initial_velocity_max = 25.82
+damping_max = 3.0000002
+damping_curve = SubResource("CurveTexture_ooc8r")
+scale_min = 0.29999998
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_5jc4t")
+color_ramp = SubResource("GradientTexture1D_q8wtj")
+
+[node name="grass" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_0yesn")
+scale = Vector2(2, 2)
+emitting = false
+texture = ExtResource("1_5702d")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_x8cjx")
+script = ExtResource("2_q8wtj")

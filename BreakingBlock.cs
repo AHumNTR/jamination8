@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class BreakingBlock : PlatformBase
 {
@@ -9,6 +10,7 @@ public partial class BreakingBlock : PlatformBase
 	Sprite2D sprite;
 	CollisionShape2D col;
 	Timer timer;
+	AudioStreamPlayer2D breakSound;
 	int stage=0;
 	public override void _Ready()
     {
@@ -17,9 +19,11 @@ public partial class BreakingBlock : PlatformBase
 		col = GetNode<CollisionShape2D>("CollisionShape2D");
 		timer = GetNode<Timer>("Timer");
 		timer.Timeout += timeout;
+		breakSound=GetNode<AudioStreamPlayer2D>("BreakingSound");
     }
 	public void timeout()
 	{
+		GD.Print(stage);
 		if (GetCollidingBodies().Count > 0)
 		{
 			if (stage < 2)
@@ -30,6 +34,7 @@ public partial class BreakingBlock : PlatformBase
 			{
 				col.Disabled = true;
 				sprite.Visible = false;
+				breakSound.Play();
 			}
 		}
 		else
@@ -43,11 +48,9 @@ public partial class BreakingBlock : PlatformBase
     }
 	public void bodyEnter(Node body)
     {
+		if (timer.TimeLeft == 0) 
 		timer.Start();			
     }
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-
-	}
+	
 }

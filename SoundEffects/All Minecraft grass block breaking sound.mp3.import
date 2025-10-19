@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://i86pw7d3s0d4"
+path="res://.godot/imported/All Minecraft grass block breaking sound.mp3-a5012a4032d75012853d9129f644a5e1.mp3str"
+
+[deps]
+
+source_file="res://SoundEffects/All Minecraft grass block breaking sound.mp3"
+dest_files=["res://.godot/imported/All Minecraft grass block breaking sound.mp3-a5012a4032d75012853d9129f644a5e1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

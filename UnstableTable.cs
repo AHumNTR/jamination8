@@ -15,12 +15,9 @@ public partial class UnstableTable : RigidBody2D
     {
         if (body.Name == "Player"&&!ap.IsPlaying())
         {
-			    ap.Play("RESET");
+			    ap.Play("fallingDown");
         }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-	{
-	}
 }

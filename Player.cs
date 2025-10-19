@@ -10,20 +10,31 @@ public partial class Player : RigidBody2D
 	public float jumpForce;
 	Area2D area2D;
 	int swingDirection = 1;
+	AudioStreamPlayer2D jumpSound,grassSound;
     public override void _Ready()
     {
         base._Ready();
 		area2D=GetNode<Area2D>("Area2D");
+		jumpSound=GetNode<AudioStreamPlayer2D>("JumpSound");
+		grassSound=GetNode<AudioStreamPlayer2D>("GrassSound");
     }
 
 	public void _on_area_2d_body_entered(Node body)
     {
 		PackedScene particleScene;
-		if (body.GetType().IsAssignableTo(typeof(PlatformBase))) particleScene=((PlatformBase)body).particle;
-		else particleScene = grassParticle;
+		if (body.GetType().IsAssignableTo(typeof(PlatformBase)))
+        {
+			particleScene = ((PlatformBase)body).particle;
+			body.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D").Play();
+        } 
+		else
+		{
+			particleScene = grassParticle;
+			grassSound.Play();
+		}
 		GpuParticles2D particle = particleScene.Instantiate<GpuParticles2D>();
 		AddSibling(particle);
-		particle.GlobalPosition = area2D.GlobalPosition;
+		particle.GlobalPosition = GlobalPosition;
     }
 
 
@@ -39,9 +50,11 @@ public partial class Player : RigidBody2D
 		{
 			GD.Print("jumping");
 			ApplyForce(-Transform.Y * jumpForce);
+			jumpSound.Play();
 		}
 		if (Math.Abs(RotationDegrees % 360) > 60)
 		{
+			RotationDegrees = 60 * swingDirection;
 			swingDirection=swingDirection * -1;//should kill you instead
 
 		}
