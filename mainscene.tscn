@@ -1,16 +1,18 @@
-[gd_scene load_steps=19 format=4 uid="uid://ddhfh4hlxvtcj"]
+[gd_scene load_steps=25 format=4 uid="uid://ddhfh4hlxvtcj"]
 
 [ext_resource type="Script" uid="uid://blxpkivs506wv" path="res://Player.cs" id="1_0e48y"]
-[ext_resource type="Texture2D" uid="uid://dirn7yynv64c4" path="res://icon.svg" id="1_wtcfe"]
 [ext_resource type="Texture2D" uid="uid://2scc3odvafno" path="res://characterpogo.png" id="3_epypp"]
 [ext_resource type="Texture2D" uid="uid://dva8b1315yw28" path="res://tilemapnormal.png" id="4_0lhry"]
 [ext_resource type="Texture2D" uid="uid://dmxx8x4wpk41o" path="res://tilemap.png" id="4_1ftms"]
 [ext_resource type="Script" uid="uid://b7hy34yoymppk" path="res://TileMapGenerator.cs" id="4_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://jtkruklfcyy7" path="res://clouds.png" id="5_4p23x"]
 [ext_resource type="PackedScene" uid="uid://dk12f7kphhlp2" path="res://SpecialPlatform/breaking_block.tscn" id="5_kdubu"]
 [ext_resource type="PackedScene" uid="uid://b5s2vdb3ve7x0" path="res://SpecialPlatform/slidingblock.tscn" id="7_0lhry"]
 [ext_resource type="PackedScene" uid="uid://bow42gqo06f30" path="res://SpecialPlatform/BouncyPlatform.tscn" id="8_0ibrq"]
 [ext_resource type="PackedScene" uid="uid://dui62uvt4gg2s" path="res://SpecialPlatform/movingplatform.tscn" id="10_0lhry"]
 [ext_resource type="PackedScene" uid="uid://csoxj2pnhncm6" path="res://SpecialPlatform/rotating_platform.tscn" id="11_0ibrq"]
+[ext_resource type="Script" uid="uid://b7rub3mr8geuv" path="res://UnstableTable.cs" id="11_4ofsq"]
+[ext_resource type="Texture2D" uid="uid://dal8ks0hgmqv3" path="res://table.png" id="12_4p23x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lhry"]
 radius = 5.8309517
@@ -44,11 +46,18 @@ texture_region_size = Vector2i(320, 80)
 0:3/0 = 0
 0:4/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jtreq"]
+texture = ExtResource("5_4p23x")
+texture_region_size = Vector2i(1500, 750)
+0:0/0 = 0
+0:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_epypp"]
 tile_size = Vector2i(40, 40)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0ibrq")
 sources/1 = SubResource("TileSetAtlasSource_1ftms")
+sources/2 = SubResource("TileSetAtlasSource_jtreq")
 
 [sub_resource type="Gradient" id="Gradient_0lhry"]
 offsets = PackedFloat32Array(0, 0.37417218, 0.66225165, 1)
@@ -60,7 +69,56 @@ fill_from = Vector2(0.54651165, 0)
 fill_to = Vector2(0.5651163, 0.98372096)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ibrq"]
-size = Vector2(127, 120)
+size = Vector2(132.06006, 116.96289)
+
+[sub_resource type="Animation" id="Animation_j8b8d"]
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.54005724]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8266667, 1.2666667, 1.7166667, 2.5666666, 3.1333334, 3.7, 4.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-888, -6416), Vector2(-886, -6418), Vector2(-563, -6236), Vector2(-429, -5385), Vector2(-326, -4633), Vector2(81, -3019), Vector2(388, -2183), Vector2(375, -1489), Vector2(545, -151)]
+}
+
+[sub_resource type="Animation" id="Animation_jtreq"]
+resource_name = "fallingDown"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.27052602]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lc52x"]
+_data = {
+&"RESET": SubResource("Animation_j8b8d"),
+&"fallingDown": SubResource("Animation_jtreq")
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -72,30 +130,30 @@ offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(4207, -4375)
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(-888, -6416)
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 185
 script = ExtResource("1_0e48y")
 jumpForce = 50000.0
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(0, -64)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("3_epypp")
 
-[node name="Camera2D" type="Camera2D" parent="RigidBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-5.88836, -17.416292)
 rotation = 0.064577185
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
 polygon = PackedVector2Array(3, 0.9500122, 6, -130.04999, -15, -130.04999, -3, -0.049987793)
 
-[node name="Area2D" type="Area2D" parent="RigidBody2D"]
+[node name="Area2D" type="Area2D" parent="Player"]
 position = Vector2(0, 4)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 shape = SubResource("CircleShape2D_0lhry")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -111,12 +169,22 @@ position = Vector2(1504.0001, -4036)
 scale = Vector2(121.546005, 121.546005)
 texture = SubResource("GradientTexture2D_0ibrq")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(4148, -5816)
+[node name="StaticBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-923, -6358)
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("11_4ofsq")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-texture = ExtResource("1_wtcfe")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_4p23x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1.5, 1)
+position = Vector2(-1.6025391, 5.78125)
 shape = SubResource("RectangleShape2D_0ibrq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lc52x")
+}
+autoplay = "RESET"
