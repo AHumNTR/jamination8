@@ -1,8 +1,11 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 public partial class Player : RigidBody2D
 {
+	[Export]
+	public PackedScene grassParticle;
 	[Export]
 	public float jumpForce;
 	Area2D area2D;
@@ -13,8 +16,19 @@ public partial class Player : RigidBody2D
 		area2D=GetNode<Area2D>("Area2D");
     }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
+	public void _on_area_2d_body_entered(Node body)
+    {
+		PackedScene particleScene;
+		if (body.GetType().IsAssignableTo(typeof(PlatformBase))) particleScene=((PlatformBase)body).particle;
+		else particleScene = grassParticle;
+		GpuParticles2D particle = particleScene.Instantiate<GpuParticles2D>();
+		AddSibling(particle);
+		particle.GlobalPosition = area2D.GlobalPosition;
+    }
+
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _PhysicsProcess(double delta)
 	{
 		Rotate((float)delta * swingDirection);
 		if (Input.IsActionJustPressed("ChangeRotation"))
@@ -28,7 +42,6 @@ public partial class Player : RigidBody2D
 		}
 		if (Math.Abs(RotationDegrees % 360) > 60)
 		{
-			GD.Print("ov");
 			swingDirection=swingDirection * -1;//should kill you instead
 
 		}

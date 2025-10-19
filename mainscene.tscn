@@ -1,13 +1,14 @@
-[gd_scene load_steps=28 format=4 uid="uid://ddhfh4hlxvtcj"]
+[gd_scene load_steps=29 format=4 uid="uid://ddhfh4hlxvtcj"]
 
 [ext_resource type="Script" uid="uid://blxpkivs506wv" path="res://Player.cs" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://2scc3odvafno" path="res://characterpogo.png" id="3_epypp"]
+[ext_resource type="PackedScene" uid="uid://do67d3crk2onv" path="res://test.tscn" id="3_lc52x"]
 [ext_resource type="Texture2D" uid="uid://dva8b1315yw28" path="res://tilemapnormal.png" id="4_0lhry"]
 [ext_resource type="Texture2D" uid="uid://dmxx8x4wpk41o" path="res://tilemap.png" id="4_1ftms"]
 [ext_resource type="Script" uid="uid://b7hy34yoymppk" path="res://TileMapGenerator.cs" id="4_q6r6c"]
 [ext_resource type="Texture2D" uid="uid://jtkruklfcyy7" path="res://clouds.png" id="5_4p23x"]
 [ext_resource type="PackedScene" uid="uid://dk12f7kphhlp2" path="res://SpecialPlatform/breaking_block.tscn" id="5_kdubu"]
-[ext_resource type="Texture2D" uid="uid://c7be441l1jvi4" path="res://flowers.png" id="6_j8b8d"]
+[ext_resource type="Texture2D" uid="uid://be36ob8u6oi28" path="res://flowers.png" id="6_j8b8d"]
 [ext_resource type="PackedScene" uid="uid://b5s2vdb3ve7x0" path="res://SpecialPlatform/slidingblock.tscn" id="7_0lhry"]
 [ext_resource type="PackedScene" uid="uid://bow42gqo06f30" path="res://SpecialPlatform/BouncyPlatform.tscn" id="8_0ibrq"]
 [ext_resource type="PackedScene" uid="uid://dui62uvt4gg2s" path="res://SpecialPlatform/movingplatform.tscn" id="10_0lhry"]
@@ -25,15 +26,19 @@ texture_region_size = Vector2i(40, 40)
 0:0/0 = 0
 0:0/0/z_index = 2
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+0:0/0/custom_data_0 = ExtResource("3_lc52x")
 1:0/0 = 0
 1:0/0/z_index = 2
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+1:0/0/custom_data_0 = ExtResource("3_lc52x")
 2:0/0 = 0
 2:0/0/z_index = 2
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+2:0/0/custom_data_0 = ExtResource("3_lc52x")
 3:0/0 = 0
 3:0/0/z_index = 2
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
+3:0/0/custom_data_0 = ExtResource("3_lc52x")
 0:1/0 = 0
 0:1/0/z_index = 2
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -20, 20, -20, 20, 20, -20, 20)
@@ -78,6 +83,8 @@ texture_region_size = Vector2i(90, 100)
 [sub_resource type="TileSet" id="TileSet_epypp"]
 tile_size = Vector2i(40, 40)
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "particle"
+custom_data_layer_0/type = 24
 sources/0 = SubResource("TileSetAtlasSource_0ibrq")
 sources/1 = SubResource("TileSetAtlasSource_1ftms")
 sources/2 = SubResource("TileSetAtlasSource_jtreq")
@@ -160,6 +167,7 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 185
 script = ExtResource("1_0e48y")
+grassParticle = ExtResource("3_lc52x")
 jumpForce = 50000.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
@@ -218,3 +226,5 @@ z_index = -1
 position = Vector2(1587, -7140.0005)
 scale = Vector2(1.6400006, 1.6400006)
 texture = ExtResource("15_lc52x")
+
+[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
