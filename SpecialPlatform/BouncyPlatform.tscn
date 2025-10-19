@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bow42gqo06f30"]
+[gd_scene load_steps=6 format=3 uid="uid://bow42gqo06f30"]
 
 [ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_2jxpd"]
+[ext_resource type="PackedScene" path="res://slime.tscn" id="2_d5wsm"]
 [ext_resource type="Texture2D" uid="uid://n01bekcv1wq5" path="res://jumpyplatform.png" id="2_etsvv"]
+[ext_resource type="AudioStream" uid="uid://cg6wg5atbpau" path="res://SoundEffects/slime-impact-352473.mp3" id="3_d1xrf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ubxb3"]
 friction = 0.0
@@ -9,6 +11,10 @@ bounce = 1.0
 
 [node name="BouncyPlatform" instance=ExtResource("1_2jxpd")]
 physics_material_override = SubResource("PhysicsMaterial_ubxb3")
+particle = ExtResource("2_d5wsm")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_etsvv")
+
+[node name="AudioStreamPlayer2D" parent="." index="2"]
+stream = ExtResource("3_d1xrf")

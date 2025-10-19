@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk12f7kphhlp2"]
+[gd_scene load_steps=9 format=3 uid="uid://dk12f7kphhlp2"]
 
 [ext_resource type="PackedScene" uid="uid://mrwckx4k6vq5" path="res://SpecialPlatform/special_Platform_base.tscn" id="1_5jelt"]
 [ext_resource type="Script" uid="uid://doih8q2bbpx4g" path="res://BreakingBlock.cs" id="2_jgh2o"]
 [ext_resource type="Texture2D" uid="uid://bnqmw1xr8etc2" path="res://crack3.png" id="3_5jelt"]
 [ext_resource type="Texture2D" uid="uid://c4jr7ebva7g3f" path="res://crack1.png" id="3_jgh2o"]
 [ext_resource type="Texture2D" uid="uid://cv51ows0ppuda" path="res://crack2.png" id="4_5lu1h"]
+[ext_resource type="AudioStream" uid="uid://cp5rbnx6ev51k" path="res://SoundEffects/impacts-01-73737.mp3" id="6_jgh2o"]
+[ext_resource type="PackedScene" uid="uid://congj8sir44a0" path="res://wood.tscn" id="6_m0w7x"]
+[ext_resource type="AudioStream" uid="uid://i86pw7d3s0d4" path="res://SoundEffects/All Minecraft grass block breaking sound.mp3" id="7_5lu1h"]
 
 [node name="BreakingBlock" instance=ExtResource("1_5jelt")]
 freeze_mode = 1
@@ -12,6 +15,7 @@ contact_monitor = true
 max_contacts_reported = 3
 script = ExtResource("2_jgh2o")
 textures = Array[Texture2D]([ExtResource("3_jgh2o"), ExtResource("4_5lu1h"), ExtResource("3_5jelt")])
+particle = ExtResource("6_m0w7x")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_jgh2o")
@@ -20,3 +24,10 @@ texture = ExtResource("3_jgh2o")
 position = Vector2(2, -0.5)
 
 [node name="Timer" type="Timer" parent="." index="2"]
+wait_time = 1.5
+
+[node name="AudioStreamPlayer2D" parent="." index="3"]
+stream = ExtResource("6_jgh2o")
+
+[node name="BreakingSound" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("7_5lu1h")
